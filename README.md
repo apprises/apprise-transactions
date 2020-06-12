@@ -14,7 +14,7 @@ To inform or tell (someone). To make one aware of something.
 * A common and intuitive notification syntax.
 * Supports the handling of images and attachments (to the notification services that will accept them).
 
-Business owners who wish to receive notifications for payments no longer need to develop a custom notification system for each and every new payment plantform or notification service as they appear. They can use this one script to standardize how transactions are received across payment platforms.
+Business owners who wish to receive notifications for payments no longer need to develop a custom notification system for each and every new payment platform or notification service as they appear. They can use this one script to standardize how transactions are received across payment platforms.
 
 Developers who wish to build applications that accept payments can more easily integrate a range of payment platforms. JSON formatted requests can be sent to notification services, such as Amazon SNS or a custom endpoint, for further processing. Everything is already wrapped and supported within the *apprise transaction notify* script that ships with this product.
 
