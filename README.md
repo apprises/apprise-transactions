@@ -8,7 +8,7 @@ To inform or tell (someone). To make one aware of something.
 
 **Apprise Transactions** *aims* to enable push Notifications for *just about* every payment platform with *just about* every notification service
 
-*transaction notification* services available to us today such as: Telegram, Discord, Slack, Amazon SNS, Gotify, etc.
+*notification* services available to us today such as: Telegram, Discord, Slack, Amazon SNS, Gotify, etc.
 
 * One notification library to rule them all.
 * A common and intuitive notification syntax.
