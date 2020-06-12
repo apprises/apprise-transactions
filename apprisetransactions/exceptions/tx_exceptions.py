@@ -10,7 +10,6 @@ class NumConfirmationsNotMet(Exception):
     pass
 
 
-
 class NoTXToProcess(Exception):
     pass
 

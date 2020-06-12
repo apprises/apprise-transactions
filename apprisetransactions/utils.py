@@ -9,6 +9,7 @@ import requests
 from requests.exceptions import HTTPError
 
 
+# flake8: noqa: C901
 def parse_placeholders(tx: object, body: str, title: str = None):
     amount_in_fiat = None
     fiat = None
@@ -51,8 +52,13 @@ def parse_placeholders(tx: object, body: str, title: str = None):
                 if re.search(f".*{prop_re}.*", msg[i]):
                     # just swap the value with the {placeholder}
                     # .rstrip('0').rstrip('.') is to remove the trailing zeros from decimals i.e. amount
-                    msg[i] = re.sub(prop_re, attr.__str__().rstrip('0').rstrip('.'), msg[i])
-                if prop == "amount" and re.search("{amount_in_(...)}", msg[i]) is not None:
+                    msg[i] = re.sub(
+                        prop_re, attr.__str__().rstrip("0").rstrip("."), msg[i]
+                    )
+                if (
+                    prop == "amount"
+                    and re.search("{amount_in_(...)}", msg[i]) is not None
+                ):
                     # convert amount to fiat if necessary
                     fiat = (
                         re.search("{amount_in_(...)}", msg[i]).group(1)
@@ -66,9 +72,7 @@ def parse_placeholders(tx: object, body: str, title: str = None):
                         amount_in_fiat_unformatted = currency_converter(
                             tx.amount, tx.currency, fiat, tx.timestamp
                         )
-                        amount_in_fiat = "{0:.2f}".format(
-                            amount_in_fiat_unformatted
-                        )
+                        amount_in_fiat = "{0:.2f}".format(amount_in_fiat_unformatted)
 
                     msg[i] = re.sub(prop_fiat, amount_in_fiat, msg[i])
 

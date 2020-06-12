@@ -42,11 +42,14 @@ class Transaction(ABC):
     # raw_data will contain the response received from the server in it's entirety
     @abstractmethod
     def set_transaction_data(
-            self, server_config: ServerConfig, get_raw_data: bool = False
+        self, server_config: ServerConfig, get_raw_data: bool = False
     ):
         pass
 
-    def notify(self, urls: list, body: str = None, title: str = None, attach: str = None) -> bool:
+    # flake8: noqa: F401
+    def notify(
+        self, urls: list, body: str = None, title: str = None, attach: str = None
+    ) -> bool:
         # body/title are ignored for xml/json/sns urls
         if body is not None or title is not None:
             new_body, new_title = parse_placeholders(self, body, title)

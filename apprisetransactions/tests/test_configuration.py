@@ -1,8 +1,8 @@
 import json
 from unittest import TestCase
 
-from . import settings
-from ..configuration import ServerConfig
+from apprisetransactions import settings
+from apprisetransactions.configuration import ServerConfig
 
 
 class TestCase_Config(TestCase):

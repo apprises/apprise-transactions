@@ -8,8 +8,8 @@ from xml.dom.minidom import parseString
 
 from dicttoxml import dicttoxml
 
-from . import settings
-from ..transactions import MoneroTransaction
+from apprisetransactions import settings
+from apprisetransactions.transactions import MoneroTransaction
 
 
 class TestCase_Notify(TestCase):
@@ -107,6 +107,7 @@ class TestCase_Notify(TestCase):
     @patch("apprisetransactions.transactions.transaction.Apprise")
     def test_notify_other(self, mock_apprise):
         pass
+
         def notify_sideeffect(body, title, attach):
             self.assertEqual(body, "New XMR received")
             self.assertEqual(title, "Private Notification")

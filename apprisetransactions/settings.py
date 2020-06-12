@@ -6,7 +6,6 @@ class BlockchainSecurity:
     FULLY_CONFIRMED = 10
 
 
-
 def init():
     global security_level
     security_level = BlockchainSecurity.MEM_POOL_ONLY

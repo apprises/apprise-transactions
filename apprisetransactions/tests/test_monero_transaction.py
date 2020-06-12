@@ -9,9 +9,9 @@ from monero.address import address
 from monero.numbers import PaymentID
 from monero.transaction import IncomingPayment, Transaction
 
-from . import settings
-from ..configuration import ServerConfig
-from ..transactions import MoneroTransaction
+from apprisetransactions import settings
+from apprisetransactions.configuration import ServerConfig
+from apprisetransactions.transactions import MoneroTransaction
 
 
 class TestCase_MoneroTX(TestCase):
@@ -220,7 +220,7 @@ class TestCase_MoneroTX(TestCase):
             "UeGbYEHmPRdegKGwLT8tBBK7P6L32RELNzCR6QzNFkmogDjvypyV",
         )
         self.assertEqual(transaction.timestamp, datetime(2018, 1, 29, 15, 0, 25))
-        self.assertEqual(transaction.confirmations, None)
+        self.assertEqual(transaction.confirmations, 0)
 
     @patch("apprisetransactions.transactions.monero_transaction.JSONRPCWallet")
     def test_set_transaction_data_mem_pool(self, mock_backend):
@@ -247,7 +247,7 @@ class TestCase_MoneroTX(TestCase):
             "9tQoHWyZ4yXUgbz9nvMcFZUfDy5hxcdZabQCxmNCUukKYicXegsDL7nQpcUa3A1pF6K3fhq3scsyY88tdB1MqucULcKzWZC",
         )
         self.assertEqual(transaction.timestamp, datetime(2018, 1, 29, 21, 13, 28))
-        self.assertEqual(transaction.confirmations, None)
+        self.assertEqual(transaction.confirmations, 0)
 
     @patch("apprisetransactions.transactions.monero_transaction.JSONRPCWallet")
     def test_set_transaction_data_exception_numconfirmations(self, mock_backend):
@@ -272,7 +272,7 @@ class TestCase_MoneroTX(TestCase):
         with self.assertRaises(NoTXFound):
             transaction.set_transaction_data(get_raw_data=False)
 
-    @patch("transactions.monero_transaction.JSONRPCWallet")
+    @patch("apprisetransactions.transactions.monero_transaction.JSONRPCWallet")
     def test_get_tx_data_exception_notxtoprocess(self, mock_backend):
         settings.security_level = 0
         # tx in_block, not in mem pool

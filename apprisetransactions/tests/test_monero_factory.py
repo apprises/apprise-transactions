@@ -1,7 +1,7 @@
 from unittest import TestCase
 
-from ..factories import MoneroFactory
-from ..transactions import MoneroTransaction
+from apprisetransactions.factories import MoneroFactory
+from apprisetransactions.transactions import MoneroTransaction
 
 
 class TestCase_MoneroFactory(TestCase):

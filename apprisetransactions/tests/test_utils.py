@@ -4,9 +4,9 @@ from ..exceptions import ExchangeRateDataError
 from unittest import TestCase
 from unittest.mock import MagicMock, patch
 
-from . import settings, utils
-from ..transactions import MoneroTransaction
-from ..utils import currency_converter, parse_placeholders
+from apprisetransactions import settings, utils
+from apprisetransactions.transactions import MoneroTransaction
+from apprisetransactions.utils import currency_converter, parse_placeholders
 
 
 class TestCase_Utils(TestCase):
@@ -75,10 +75,16 @@ class TestCase_Utils(TestCase):
         self.assertEqual(title_after, title_expected)
 
         # all transaction attributes
-        body = "tx_id%3A%7Btx_id%7D%2Cpayment_provider%3A%7Bpayment_provider%7D%2Camount%3A%7Bamount%7D%2Cfee%3A%7Bfee%7D"
-        title = "note%3A%7Bnote%7D%2Crecipient%3A%7Brecipient%7D%2Ctimestamp%3A%7Btimestamp%7D%2Cconfirmations%3A%7Bconfirmations%7D"
-        title_expected = "note:,recipient:9tQoHWyZ4yXUgbz9nvMcFZUfDy5hxcdZabQCxmNCUukKYicXegsDL7nQpcUa3A1pF6K3fhq3scsyY88tdB1MqucULcKzWZC,timestamp:2018-01-29 13:17:18,confirmations:1"
-        body_expected = "tx_id:4ea70add5d0c7db33557551b15cd174972fcfc73bf0f6a6b47b7837564b708d3,payment_provider:Monero,amount:4.000000000000,fee:0.000962550000"
+        body = "tx_id%3A%7Btx_id%7D%2Cpayment_provider" \
+               "%3A%7Bpayment_provider%7D%2Camount%3A%7B" \
+               "amount%7D%2Cfee%3A%7Bfee%7D"
+        title = "note%3A%7Bnote%7D%2Crecipient%3A%7Brecipient" \
+                "%7D%2Ctimestamp%3A%7Btimestamp%7D%2Cconfirmations%3A%7Bconfirmations%7D"
+        title_expected = "note:,recipient:9tQoHWyZ4yXUgbz9nvMcFZUfDy5hxcdZabQCxmNC" \
+                         "UukKYicXegsDL7nQpcUa3A1pF6K3fhq3scsyY88tdB1MqucULcKzWZC," \
+                         "timestamp:2018-01-29 13:17:18,confirmations:1"
+        body_expected = "tx_id:4ea70add5d0c7db33557551b15cd174972fcfc73bf0f6a6b47b7837564b708d3," \
+                        "payment_provider:Monero,amount:4,fee:0.00096255"
         body_after, title_after = parse_placeholders(self.transaction, body, title)
         self.assertEqual(body_after, body_expected)
         self.assertEqual(title_after, title_expected)
@@ -105,7 +111,7 @@ class TestCase_Utils(TestCase):
             mock_logger.debug = MagicMock(side_effect=side_effect_lonely_tx)
             parse_placeholders(transaction_with_no_details, "{amount}", "{recipient}")
 
-    @patch("utils.requests.get")
+    @patch("apprisetransactions.utils.requests.get")
     def test_currency_converter(self, mock_get):
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = self.amount_in_usd_result
@@ -117,7 +123,7 @@ class TestCase_Utils(TestCase):
         )
         self.assertEqual(amount_in_usd, Decimal("1269.660000000000081854523160"))
 
-    @patch("utils.requests.get")
+    @patch("apprisetransactions.utils.requests.get")
     def test_currency_converter_error(self, mock_get):
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = self.amount_in_error
@@ -129,7 +135,7 @@ class TestCase_Utils(TestCase):
                 self.transaction.timestamp,
             )
 
-    @patch("utils.requests.get")
+    @patch("apprisetransactions.utils.requests.get")
     def test_parse_currency_conversion(self, mock_get):
         mock_get.return_value.status_code = 200
         mock_get.return_value.json.return_value = self.amount_in_usd_result

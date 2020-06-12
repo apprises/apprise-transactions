@@ -15,6 +15,7 @@ path = str(PurePath(Path(__file__).parent.absolute(), settings.logging_config_fi
 logging.config.fileConfig(path)
 logger: Logger = logging.getLogger(__name__)
 
+
 def add_args():
     try:
         parser = argparse.ArgumentParser(description="Publish transactions")
@@ -160,7 +161,10 @@ def main():
 
     try:
         apprise_result = transaction.notify(
-            urls=split_urls(args.urls), body=args.body, title=args.title, attach=args.attach
+            urls=split_urls(args.urls),
+            body=args.body,
+            title=args.title,
+            attach=args.attach,
         )
         if apprise_result:
             logger.info(
@@ -170,4 +174,3 @@ def main():
     except Exception as ae:
         logger.exception(ae)
         exit(1)
-

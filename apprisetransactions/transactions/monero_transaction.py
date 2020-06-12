@@ -38,6 +38,7 @@ class MoneroTransaction(Transaction):
         interval=250,
         on_backoff=backoff_confirmations_hdlr,
     )
+    # flake8: noqa: C901
     def set_transaction_data(self, get_raw_data: bool = False):
         if self.server_config.default is True:
             jsonrpcwallet = JSONRPCWallet()
@@ -84,7 +85,7 @@ class MoneroTransaction(Transaction):
                 )
 
         if settings.security_level >= 1 or (
-                settings.security_level == -1 and this_payment is None
+            settings.security_level == -1 and this_payment is None
         ):
             incoming_payments = wallet.incoming(tx_id=self.tx_id)
             if incoming_payments == []:
@@ -110,9 +111,11 @@ class MoneroTransaction(Transaction):
         self.recipient = this_payment.local_address
         self.timestamp = this_payment.transaction.timestamp
         # if the tx is in the mem_pool confirmations will be null, set it to 0 instead
-        self.confirmations = (this_payment.transaction.confirmations
-                              if this_payment.transaction.confirmations is not None
-                              else 0)
+        self.confirmations = (
+            this_payment.transaction.confirmations
+            if this_payment.transaction.confirmations is not None
+            else 0
+        )
 
         if get_raw_data is True:
             self._raw_data = jsonrpcwallet.raw_request(

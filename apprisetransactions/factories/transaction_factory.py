@@ -12,7 +12,7 @@ class TransactionFactory(ABC):
     def __init__(self, server_config_file: str = None):
         try:
             self.server_config = ServerConfig(config_file=server_config_file)
-        except Exception as e:
+        except Exception:
             logging.critical(
                 f"PaymentProvider: {self.payment_provider} Status: Failed to set server "
                 f"config Action: Further debugging needed",
