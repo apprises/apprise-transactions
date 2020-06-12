@@ -1,12 +1,14 @@
 from setuptools import setup
 from setuptools import find_packages
 
+README = ("README.md").read_text()
+
 setup(
     name="apprise-transactions",
     version="0.0.2",
     packages=find_packages(),
     include_package_data=True,
-    long_description=open("README.md").readlines(),
+    long_description=README,
     long_description_content_type="text/markdown",
     url="https://github.com/apprises/apprise-transactions",
     keywords="Push Notifications Alerts Apprise Email AWS SNS Boxcar ClickSend "
