@@ -1,0 +1,5 @@
+apprise >= 0.8.5
+monero >= 0.7.3
+argparse >= 1.4.0
+backoff >= 1.10.0
+dicttoxml >= 1.7.4
