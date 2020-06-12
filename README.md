@@ -19,6 +19,8 @@ Business owners who wish to receive notifications for payments no longer need to
 Developers who wish to build applications that accept payments can more easily integrate a range of payment platforms. JSON formatted requests can be sent to notification services, such as Amazon SNS or a custom endpoint, for further processing. Everything is already wrapped and supported within the *apprise transaction notify* script that ships with this product.
 
 
+![apprise-transactions unit tests](https://github.com/apprises/apprise-transactions/workflows/apprise-transactions%20unit%20tests/badge.svg)
+![Upload Python Package](https://github.com/apprises/apprise-transactions/workflows/Upload%20Python%20Package/badge.svg)
 [![codecov](https://codecov.io/gh/apprises/apprise-transactions/branch/master/graph/badge.svg)](https://codecov.io/gh/apprises/apprise-transactions)
 
 ## Supported Notifications
