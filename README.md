@@ -40,7 +40,7 @@ Payment Platform  | Status | Dependent Services | Default Port
 ## Installation
 The easiest way is to install this package is from pypi:
 ```bash
-pip install apprisetransactions
+pip install apprise-transactions
 ```
 ## Command Line
 A small command line tool is also provided with this package called apprise-transactions. If you know the server url's you wish to notify, you can simply provide them all on the command line and send your notifications that way:
