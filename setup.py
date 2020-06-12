@@ -1,11 +1,15 @@
+import pathlib
 from setuptools import setup
 from setuptools import find_packages
 
-README = ("README.md").read_text()
+
+HERE = pathlib.Path(__file__).parent
+
+README = (HERE / "README.md").read_text()
 
 setup(
     name="apprise-transactions",
-    version="0.0.3",
+    version="0.0.4",
     packages=find_packages(),
     include_package_data=True,
     long_description=README,
