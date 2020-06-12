@@ -6,6 +6,8 @@ setup(
     version="0.0.1",
     packages=find_packages(),
     include_package_data=True,
+    long_description=open("README.md").readlines(),
+    long_description_content_type="text/markdown",
     url="https://github.com/apprises/apprise-transactions",
     keywords="Push Notifications Alerts Apprise Email AWS SNS Boxcar ClickSend "
     "Discord Dbus Emby Faast Flock Gitter Gnome Gotify Growl IFTTT Join "
