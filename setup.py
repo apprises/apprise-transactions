@@ -5,7 +5,7 @@ README = ("README.md").read_text()
 
 setup(
     name="apprise-transactions",
-    version="0.0.2",
+    version="0.0.3",
     packages=find_packages(),
     include_package_data=True,
     long_description=README,
