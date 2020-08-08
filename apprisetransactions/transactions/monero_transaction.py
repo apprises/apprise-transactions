@@ -63,14 +63,14 @@ class MoneroTransaction(Transaction):
 
         this_payment = None
         if settings.security_level == 0 or settings.security_level == -1:
-            # get transactions in mem_pool
-            incoming_payments = wallet.incoming(unconfirmed=True, confirmed=False)
-            tx_in_mem_pool = False
-            for payment in incoming_payments:
-                if payment.transaction.hash == self.tx_id:
-                    tx_in_mem_pool = True
-                    this_payment: IncomingPayment = payment
-                    break
+            # get transaction in mem_pool
+            incoming_payment = wallet.incoming(tx_id=self.tx_id, unconfirmed=True)
+            # https://github.com/monero-ecosystem/monero-python/issues/65
+            if incoming_payment:
+                tx_in_mem_pool = True
+                this_payment: IncomingPayment = incoming_payment.pop()
+            else:
+                tx_in_mem_pool = False
 
             if tx_in_mem_pool is False and settings.security_level == 0:
                 # raising, because we weren't able to find anything in the mem_pool
