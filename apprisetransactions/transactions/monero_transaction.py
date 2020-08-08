@@ -64,7 +64,7 @@ class MoneroTransaction(Transaction):
         this_payment = None
         if settings.security_level == 0 or settings.security_level == -1:
             # get transaction in mem_pool
-            incoming_payment = wallet.incoming(tx_id=self.tx_id, unconfirmed=True)
+            incoming_payment = wallet.incoming(tx_id=self.tx_id, unconfirmed=True, confirmed=False)
             # https://github.com/monero-ecosystem/monero-python/issues/65
             if incoming_payment:
                 tx_in_mem_pool = True
