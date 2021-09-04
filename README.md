@@ -49,11 +49,13 @@ Note: The command line tool is intended to be executed once per transaction.
 ```bash
 # Here is a full example, but we will go over the parts of the command below
 
-monero-wallet-rpc --wallet-file ~/mywallet --disable-rpc-login --rpc-bind-port 18088 --prompt-for-password \
+monero-wallet-rpc --wallet-file ~/mywallet --rpc-login user:password --rpc-bind-port 18088 --prompt-for-password \
 --tx-notify "/usr/bin/apprisetransactions --payment_provider Monero --tx_id %s \
 --urls tgram://1034520651:CCCFjiawu448agga4TI_Bu3oolct1Qrxasdjf --debug --get_tx_details \
 -s 0 -b You%20have%20received%20%7Bamount%7D%20%7Bcurrency%7D%2C%20which%20is%20currently%20worth%20%24%7Bamount_in_usd%7D \
 -t Congrats%20incoming%20payment%20from%20%7Bpayment_provider%7D"
+
+# Create/enter a username and password for --rpc-login to remove limits on calling transactions in restricted mode.
 
 # First you should test that notifications are working with your preferred notification service(s) with the basic command line parameters, then add additional parameters
 apprisetransactions --payment_provider Monero --tx_id testsdiajetestasjdftestasdjf --urls tgram://1043520651:CCCFjiawu448agga4TI_Bu3oolct1Qrxasdjf
@@ -79,7 +81,6 @@ monero-wallet-rpc --tx-notify "/usr/bin/apprisetransactions  --payment_provider 
 monero-wallet-rpc --tx-notify "/usr/bin/apprisetransactions \
 --payment_provider Monero --tx_id %s \
 --urls mailto://userid:password@example.com?smtp=mail.example.com&from=noreply@example.com&name=no%20reply,pbul://o.gn5kj6nfhv736I7jC3cj3QLRiyhgl98b"
-
 
 # If you don't specify a --body (-b) or --title (-t) then the default is taken
 # --title Received%20transaction%20from%20%7Bpayment_provider%7D
