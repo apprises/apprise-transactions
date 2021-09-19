@@ -26,7 +26,7 @@ Twitch Stream Donation Alerts: [Twitch user itey58](https://www.twitch.tv/itey58
 
 Push notifications to Group Chat: [Donations Demo](https://siasky.net/fADRclweHzC2-brk3IUe9I9tKORErW9Dc8bh9du6Wp1mNg) [Telegram](https://github.com/caronc/apprise/wiki/Notify_telegram)
 
-No Monero wallet exists that supports notification on incoming transactions, you can setup Pushbullet for you to receive notifications on Mobile or desktop via the Pushbullet or Growl integration
+No Monero wallet exists that supports notification on incoming transactions, you can setup [Pushbullet](https://github.com/caronc/apprise/wiki/Notify_pushbullet) for you to receive notifications on Mobile or desktop via the Pushbullet or [Growl integration](https://github.com/caronc/apprise/wiki/Notify_growl)
 
 
 ## Supported Notifications
