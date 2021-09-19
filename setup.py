@@ -9,7 +9,7 @@ README = (HERE / "README.md").read_text()
 
 setup(
     name="apprise-transactions",
-    version="1.0.1",
+    version="1.0.2",
     packages=find_packages(),
     include_package_data=True,
     long_description=README,
