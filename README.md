@@ -6,7 +6,7 @@
 To inform or tell (someone). To make one aware of something.
 <hr/>
 
-**Apprise Transactions** *aims* to enable push Notifications for *just about* every payment platform with *just about* every notification service
+**Apprise Transactions** *aims* to enable push Notifications for Monero for  *just about* every notification service
 
 *notification* services available to us today such as: Telegram, Discord, Slack, Amazon SNS, Gotify, etc.
 
@@ -14,10 +14,11 @@ To inform or tell (someone). To make one aware of something.
 * A common and intuitive notification syntax.
 * Supports the handling of images and attachments (to the notification services that will accept them).
 
-Business owners who wish to receive notifications for payments no longer need to develop a custom notification system for each and every new payment platform or notification service as they appear. They can use this one script to standardize how transactions are received across payment platforms.
-
-Developers who wish to build applications that accept payments can more easily integrate a range of payment platforms. JSON formatted requests can be sent to notification services, such as Amazon SNS or a custom endpoint, for further processing. Everything is already wrapped and supported within the *apprise transaction notify* script that ships with this product.
-
+**Use Cases**
+Community funding initiatives: https://twitter.com/XMRArtFund/
+Twitch Stream Donation Alerts: https://www.twitch.tv/itey58
+Push notifications to Telegram Group: https://siasky.net/fADRclweHzC2-brk3IUe9I9tKORErW9Dc8bh9du6Wp1mNg
+No Monero wallet exists that supports notification on incoming transactions, you can setup Pushbullet for you to receive notifications on Mobile or desktop via the Pushbullet or Growl integration
 
 ![apprise-transactions unit tests](https://github.com/apprises/apprise-transactions/workflows/apprise-transactions%20unit%20tests/badge.svg)
 ![Upload Python Package](https://github.com/apprises/apprise-transactions/workflows/Upload%20Python%20Package/badge.svg)
@@ -34,7 +35,7 @@ The table below identifies the platforms this tool supports and some example ser
 Payment Platform  | Status | Dependent Services | Default Port
 ------------- | ------------- | ------------- | ------------- 
 [Monero](https://getmonero.org)  | Implemented (Stable) | monerod / monero-wallet-rpc | (TCP) 18081 / (TCP) 18082 
-[Square](https://developer.squareup.com/us/en)  | Planned | [Square, Inc.](https://squareup.com/us/en/about) | (TCP) 443
+[Bitcoin](https://bitcoin.org/)  | Pull Request wanted | [Bitcoin](https://bitcoin.org/) | TBD
 
 
 ## Installation
@@ -55,8 +56,6 @@ monero-wallet-rpc --wallet-file ~/mywallet --rpc-login user:password --rpc-bind-
 -s 0 -b You%20have%20received%20%7Bamount%7D%20%7Bcurrency%7D%2C%20which%20is%20currently%20worth%20%24%7Bamount_in_usd%7D \
 -t Congrats%20incoming%20payment%20from%20%7Bpayment_provider%7D"
 
-# Create/enter a username and password for --rpc-login to remove limits on calling transactions in restricted mode.
-
 # First you should test that notifications are working with your preferred notification service(s) with the basic command line parameters, then add additional parameters
 apprisetransactions --payment_provider Monero --tx_id testsdiajetestasjdftestasdjf --urls tgram://1043520651:CCCFjiawu448agga4TI_Bu3oolct1Qrxasdjf
 
@@ -73,6 +72,13 @@ which apprisetransactions
 
 monero-wallet-rpc --tx-notify "/usr/bin/apprisetransactions  --payment_provider Monero \
 --tx_id %s --urls tgram://1043520651:CCCFjiawu448agga4TI_Bu3oolct1Qrxasdjf"
+
+# Specify a username and password for --rpc-login to in order to pull the transaction details from the monero-wallet-rpc
+# The username and password you specify for the --rpc-login parameter also needs to be specified in the server config
+# Modify the [example config](https://github.com/apprises/apprise-transactions/blob/master/example_server.cfg) with your rpc information
+# Using the --server_config parameter specify the location of the configuration file
+monero-wallet-rpc --tx-notify "/usr/bin/apprisetransactions  --payment_provider Monero \
+--tx_id %s --urls tgram://1043520651:CCCFjiawu448agga4TI_Bu3oolct1Qrxasdjf" --server_config /etc/apprise/server.cfg
 
 # Now let's look at examples of all the parameters one can use with apprisetransactions
 
@@ -126,8 +132,9 @@ monero-wallet-rpc --tx-notify "/usr/bin/apprisetransactions  --payment_provider 
 
 ```
 
-### Configuration Files
-To request further transaction details requests are made to a server. By default localhost will be used.
+### Configuration
+To request further transaction details requests are made to a server. The server configuration must be configured when --get_tx_details is passed.
+
 Optionally server configuration can be stored in a file.
 ```bash
 # Configuration files can be stored anywhere and passed in via --server_config (-c)
