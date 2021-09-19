@@ -3,7 +3,7 @@ import logging
 import logging.config
 from logging import Logger
 
-from apprise.utils import split_urls
+from .utils import split_urls
 
 from . import settings
 from .factories import MoneroFactory
