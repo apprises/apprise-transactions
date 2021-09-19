@@ -20,11 +20,11 @@ To inform or tell (someone). To make one aware of something.
 
 **Use Cases**
 
-Community funding initiatives: https://twitter.com/XMRArtFund/ [Twitter](https://github.com/caronc/apprise/wiki/Notify_twitter)
+Community funding initiatives: [XMRArtFund](https://twitter.com/XMRArtFund/) [Twitter](https://github.com/caronc/apprise/wiki/Notify_twitter)
 
-Twitch Stream Donation Alerts: https://www.twitch.tv/itey58 [Streamlabs](https://github.com/caronc/apprise/wiki/Notify_streamlabs)
+Twitch Stream Donation Alerts: [Twitch user itey58](https://www.twitch.tv/itey58) [Streamlabs](https://github.com/caronc/apprise/wiki/Notify_streamlabs)
 
-Push notifications to Group Chat: https://siasky.net/fADRclweHzC2-brk3IUe9I9tKORErW9Dc8bh9du6Wp1mNg [Telegram](https://github.com/caronc/apprise/wiki/Notify_telegram)
+Push notifications to Group Chat: [Donations Demo](https://siasky.net/fADRclweHzC2-brk3IUe9I9tKORErW9Dc8bh9du6Wp1mNg) [Telegram](https://github.com/caronc/apprise/wiki/Notify_telegram)
 
 No Monero wallet exists that supports notification on incoming transactions, you can setup Pushbullet for you to receive notifications on Mobile or desktop via the Pushbullet or Growl integration
 
