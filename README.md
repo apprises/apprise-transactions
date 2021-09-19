@@ -15,9 +15,13 @@ To inform or tell (someone). To make one aware of something.
 * Supports the handling of images and attachments (to the notification services that will accept them).
 
 **Use Cases**
+
 Community funding initiatives: https://twitter.com/XMRArtFund/
+
 Twitch Stream Donation Alerts: https://www.twitch.tv/itey58
+
 Push notifications to Telegram Group: https://siasky.net/fADRclweHzC2-brk3IUe9I9tKORErW9Dc8bh9du6Wp1mNg
+
 No Monero wallet exists that supports notification on incoming transactions, you can setup Pushbullet for you to receive notifications on Mobile or desktop via the Pushbullet or Growl integration
 
 ![apprise-transactions unit tests](https://github.com/apprises/apprise-transactions/workflows/apprise-transactions%20unit%20tests/badge.svg)
