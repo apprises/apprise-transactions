@@ -73,7 +73,7 @@ which apprisetransactions
 monero-wallet-rpc --tx-notify "/usr/bin/apprisetransactions  --payment_provider Monero \
 --tx_id %s --urls tgram://1043520651:CCCFjiawu448agga4TI_Bu3oolct1Qrxasdjf"
 
-# Specify a username and password for --rpc-login to in order to pull the transaction details from the monero-wallet-rpc
+# Specify a username and password for --rpc-login in order to pull the transaction details from the monero-wallet-rpc
 # The username and password you specify for the --rpc-login parameter also needs to be specified in the server config
 # Modify the [example config](https://github.com/apprises/apprise-transactions/blob/master/example_server.cfg) with your rpc information
 # Using the --server_config parameter specify the location of the configuration file
