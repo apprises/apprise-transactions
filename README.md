@@ -1,3 +1,7 @@
+![apprise-transactions unit tests](https://github.com/apprises/apprise-transactions/workflows/apprise-transactions%20unit%20tests/badge.svg)
+![Upload Python Package](https://github.com/apprises/apprise-transactions/workflows/Upload%20Python%20Package/badge.svg)
+[![codecov](https://codecov.io/gh/apprises/apprise-transactions/branch/master/graph/badge.svg)](https://codecov.io/gh/apprises/apprise-transactions)
+
 ![Apprise Logo](https://raw.githubusercontent.com/caronc/apprise/master/apprise/assets/themes/default/apprise-logo.png)
 
 <hr/>
@@ -24,9 +28,6 @@ Push notifications to Telegram Group: https://siasky.net/fADRclweHzC2-brk3IUe9I9
 
 No Monero wallet exists that supports notification on incoming transactions, you can setup Pushbullet for you to receive notifications on Mobile or desktop via the Pushbullet or Growl integration
 
-![apprise-transactions unit tests](https://github.com/apprises/apprise-transactions/workflows/apprise-transactions%20unit%20tests/badge.svg)
-![Upload Python Package](https://github.com/apprises/apprise-transactions/workflows/Upload%20Python%20Package/badge.svg)
-[![codecov](https://codecov.io/gh/apprises/apprise-transactions/branch/master/graph/badge.svg)](https://codecov.io/gh/apprises/apprise-transactions)
 
 ## Supported Notifications
 This project is dependent on [Apprise](https://github.com/caronc/apprise) for notifications.
