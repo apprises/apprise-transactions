@@ -1,4 +1,4 @@
-apprise <= 0.8.5
+apprise <= 9.5.1
 monero >= 0.7.3
 argparse >= 1.4.0
 backoff >= 1.10.0
