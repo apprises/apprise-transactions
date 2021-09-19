@@ -9,6 +9,11 @@ import requests
 from requests.exceptions import HTTPError
 
 
+# Regular expression used to destinguish between multiple URLs
+URL_DETECTION_RE = re.compile(
+    r'([a-z0-9]+?:\/\/.*?)[\s,]*(?=$|[a-z0-9]+?:\/\/)', re.I)
+
+
 # flake8: noqa: C901
 def parse_placeholders(tx: object, body: str, title: str = None):
     amount_in_fiat = None
@@ -107,3 +112,25 @@ def currency_converter(
 
     avgPrice = Decimal((hdp["high"] + hdp["low"]) / 2)
     return avgPrice * amount
+
+
+def split_urls(urls):
+    """
+    Takes a string containing URLs separated by comma's and/or spaces and
+    returns a list.
+    """
+
+    try:
+        results = URL_DETECTION_RE.findall(urls)
+
+    except TypeError:
+        results = []
+
+    if len(results) > 0 and results[len(results) - 1][-1] != urls[-1]:
+        # we always want to save the end of url URL if we can; This handles
+        # cases where there is actually a comma (,) at the end of a single URL
+        # that would have otherwise got lost when our regex passed over it.
+        results[len(results) - 1] += \
+            re.match(r'.*?([\s,]+)?$', urls).group(1).rstrip()
+
+    return results
